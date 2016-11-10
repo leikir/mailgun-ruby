@@ -53,6 +53,13 @@ module Mailgun
       from(address, variables)
     end
 
+    # Adds a reply-to address for the message object.
+    #
+    # @param [String] address The email address of the reply-to address to add to the message object.
+    def reply_to(address)
+      plain_setter('h:Reply-To', "<#{address}>")
+    end
+
     # Set a subject for the message object
     #
     # @param [String] subject The subject for the email.
@@ -259,6 +266,15 @@ module Mailgun
     end
 
     private
+
+    # Sets one string value
+    #
+    # @param [String] parameter The message object parameter name.
+    # @param [String] value The value of the parameter.
+    # @return [void]
+    def plain_setter(parameter, value)
+      @message[parameter] = value
+    end
 
     # Sets values within the multidict, however, prevents
     # duplicate values for keys.

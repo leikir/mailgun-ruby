@@ -10,7 +10,7 @@ module Mailgun
     MAX_TAGS = 3
 
     # maximum recipients per message or batch
-    MAX_RECIPIENTS = 1000
+    MAX_RECIPIENTS = 500
 
   end
 end

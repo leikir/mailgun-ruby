@@ -60,6 +60,14 @@ module Mailgun
       plain_setter('h:Reply-To', "<#{address}>")
     end
 
+    # Adds a List-Unsubscribe for the message header.
+    #
+    # @param [Array<String>] *variables Any number of url or mailto
+    # @return [void]
+    def list_unsubscribe(*variables)
+      plain_setter('h:List-Unsubscribe', variables.map { |var| "<#{var}>" }.join(','))
+    end
+
     # Set a subject for the message object
     #
     # @param [String] subject The subject for the email.

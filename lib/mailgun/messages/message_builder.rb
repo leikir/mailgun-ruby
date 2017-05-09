@@ -65,6 +65,7 @@ module Mailgun
     # @param [Array<String>] *variables Any number of url or mailto
     # @return [void]
     def list_unsubscribe(*variables)
+      return nil if variables.empty?
       plain_setter('h:List-Unsubscribe', variables.map { |var| "<#{var}>" }.join(','))
     end
 
